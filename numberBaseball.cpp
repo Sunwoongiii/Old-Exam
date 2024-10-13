@@ -190,11 +190,11 @@ public:
     if (o == 3) outCount++;
   }
 
-  int getStrikeCount() const { // Getter for strike
+  int getStrikeCount() const {
     return strike;
   }
 
-  int getOutCount() const { // Getter for outCount
+  int getOutCount() const {
     return outCount;
   }
 
@@ -286,7 +286,7 @@ vector<int> getInputFromUser() {
 }
 
 void checkNumber(vector<int> userInput) {
-  vector<int> answer = game.provideAnswer();  // private answer 배열 접근 대신 getter 사용
+  vector<int> answer = game.provideAnswer();
   int strike = 0, ball = 0, out = 0;
 
   for (int i = 0; i < 3; i++) {
@@ -308,14 +308,14 @@ int main() {
   cout << "Baseball game starts!\n";
   int trials = 0;
 
-  game.getAnswer(getThreeNumber());  // 한 번만 답 설정
+  game.getAnswer(getThreeNumber());
   while (trials < 5) {
     vector<int> userInput = getInputFromUser();
     checkNumber(userInput);
     game.showResult(userInput);
     trials++;
 
-    if (game.getStrikeCount() == 3 || game.getOutCount() == 3) {  // getter 함수로 변경
+    if (game.getStrikeCount() == 3 || game.getOutCount() == 3) {
       break;
     }
   }
