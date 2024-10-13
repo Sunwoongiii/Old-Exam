@@ -7,7 +7,6 @@ using namespace std;
 int main(){
   string _name, _age;
   vector<string>name;
-  vector<int>age;
   int maxAge = -1,sum=0,idx_max, n = 0,minAge = 101, idx_min;
 
   while(true){
@@ -16,21 +15,33 @@ int main(){
 
     if(_name == "END" && _age == "-1") break;
 
-    bool validInput = true;
+    bool validAge = true;
+    bool validName = true;
     for(int i = 0; i < _age.length(); i++){
       if(!isdigit(_age[i])){
-        validInput = false;
+        validAge = false;
         break;
       }
     }
-    if(!validInput){
-      cout<<"Invalid Input!\n";
+    
+    int tempAge = stoi(_age);
+    if(tempAge < 1 || tempAge > 100){
+      validAge = false;
+    }
+
+    for(int i = 0; i < _name.length(); i++){
+      if(!isalpha(_name[i])){
+        validName = false;
+        break;
+      }
+    }
+
+    if(!validName || !validAge){
+      cout<<"Invalid input!\n";
       continue;
     }
 
     name.push_back(_name);
-    int tempAge = stoi(_age);
-    age.push_back(tempAge);
     sum+=tempAge;
 
     if(maxAge<tempAge){
